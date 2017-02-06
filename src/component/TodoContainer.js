@@ -1,5 +1,8 @@
 import React from 'react';
 import TodoItem from './TodoItem';
+import { bindActionCreators } from 'redux';
+import {connect} from 'react-redux';
+import * as todoActions from '../action/todoActions';
 
 class TodoContainer extends React.Component {
   constructor(props,context){
@@ -18,12 +21,11 @@ class TodoContainer extends React.Component {
   }
 
   render(){
-    console.log(this.state);
     return (
       <div>
         <input type="text" />
         <ul>
-          {this.state.todos.map((todo,index) =>
+          {this.props.todos.map((todo,index) =>
             <TodoItem todo={todo} key={index} />
           )}
         </ul>
@@ -32,4 +34,16 @@ class TodoContainer extends React.Component {
   }
 }
 
-export default TodoContainer;
+function mapStateToProps(store, ownProps){
+  return {
+    todos: store.todos
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return {
+    actions: bindActionCreators(todoActions, dispatch)
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoContainer);
