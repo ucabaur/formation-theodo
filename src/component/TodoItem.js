@@ -9,6 +9,11 @@ const TodoItem = ({todo, index, deleteHandler}) => {
     marginLeft:'10px'
   }
 
+  const itemStyles = {
+    backgroundColor:'#deeff5',
+    marginTop:'3px'
+  }
+
   const mappingPriority = {
     0:'Pas important',
     1:'Important',
@@ -16,7 +21,7 @@ const TodoItem = ({todo, index, deleteHandler}) => {
   }
 
   return (
-    <li>
+    <li style={itemStyles}>
       {todo.item} ({mappingPriority[todo.priority] || 'Pas de priorite'} : {todo.due_date || 'Pas de due date'})
       <button style={buttonStyles} onClick={() =>{ deleteHandler(index)}}>X</button>
     </li>
