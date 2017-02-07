@@ -1,15 +1,18 @@
 const todo = [
   {
-    id: 'cory-house',
+    priority: 2,
+    due_date: '08/02/2017',
     item: 'Faire la formation'
   },
   {
-    id: 'scott-allen',
+    priority: 1,
+    due_date: '13/02/2017',
     item: 'Faire du done'
   },
   {
-    id: 'dan-wahlin',
-    item: ''
+    priority: 0,
+    due_date: '12/02/2017',
+    item: 'Passer ma todo en prod'
   }
 ];
 
@@ -18,7 +21,7 @@ class TodoApi {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
         resolve(Object.assign([], todo));
-      }, 300);
+      }, 0);
     });
   }
 }
