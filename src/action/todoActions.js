@@ -6,7 +6,6 @@ export function deleteTodo(index){
 }
 
 export function addTodo(payload){
-  console.log(payload);
   return  {type:cst.ADD_TODO, payload};
 }
 

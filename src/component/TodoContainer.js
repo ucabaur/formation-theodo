@@ -49,7 +49,9 @@ class TodoContainer extends React.Component {
 
     const containerStyle = {
       marginLeft: '30px',
-      marginTop: '30px'
+      marginTop: '30px',
+      backgroundColor: '#add8e6',
+      padding: '5px'
     };
 
     return (
