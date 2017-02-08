@@ -10,7 +10,17 @@ class TodoContainer extends React.Component {
     this.state = {
       item:'',
       priority:'',
-      due_date:''
+      due_date:'',
+      todos:[{
+        priority: 2,
+        due_date: '08/02/2017',
+        item: 'Faire la formation'
+      },
+      {
+        priority: 1,
+        due_date: '13/02/2017',
+        item: 'Faire du done'
+      }]
     }
 
     this.setTodo = this.setTodo.bind(this);
@@ -26,7 +36,7 @@ class TodoContainer extends React.Component {
   }
 
   deleteTodo(index){
-    this.props.actions.deleteTodo(index);
+    //this.props.actions.deleteTodo(index);
   }
 
   setPriority(e){
@@ -42,7 +52,7 @@ class TodoContainer extends React.Component {
   submit(e){
     e.preventDefault();
     const payload = Object.assign({},this.state);
-    this.props.actions.addTodo(payload);
+    //this.props.actions.addTodo(payload);
   }
 
   render(){
@@ -61,7 +71,7 @@ class TodoContainer extends React.Component {
         <input type="text" placeholder="due date" size="8" onChange={this.setDueDate}/>
         <button onClick={this.submit}>Add</button>
         <ul>
-          {this.props.todos.map((todo,index) =>
+          {this.state.todos.map((todo,index) =>
             <TodoItem todo={todo} index={index} key={index} deleteHandler={this.deleteTodo} />
           )}
         </ul>
@@ -70,16 +80,4 @@ class TodoContainer extends React.Component {
   }
 }
 
-function mapStateToProps(store, ownProps){
-  return {
-    todos: store.todos
-  };
-}
-
-function mapDispatchToProps(dispatch){
-  return {
-    actions: bindActionCreators(todoActions, dispatch)
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(TodoContainer);
+export default TodoContainer;

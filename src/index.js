@@ -8,16 +8,9 @@ import { loadTodos } from './action/todoActions';
 import TodoContainer from './component/TodoContainer'
 import CounterContainer from './component/CounterContainer'
 
-const store = configureStore();
-
-store.dispatch(loadTodos());
-
 render(
-  <Provider store={store}>
     <div>
       <TodoContainer />
-      <CounterContainer />
-    </div>
-  </Provider>,
+    </div>,
   document.getElementById('app')
 );
